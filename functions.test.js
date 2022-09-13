@@ -45,3 +45,21 @@ it('Admin should be in usersnames', () => {
     userNames = ['lewis', 'carlos', 'charles', 'admin'];
     expect(userNames).toContain('admin');
 });
+
+// Working with async data
+
+// Promise
+it('User fetched name should be Leanne Graham (Promise)', () => {
+    expect.assertions(1);
+    return functions.fetchUser()
+        .then(data => {
+            expect(data.name).toEqual('Leanne Graham');
+        });
+});
+
+// Async Await
+it('User fetched name should be Leanne Graham (Async-Await)', async () => {
+    expect.assertions(1);
+    const data = await functions.fetchUser();
+    expect(data.name).toEqual('Leanne Graham');
+});
